@@ -1,4 +1,4 @@
-#include <Arduino.h>
+
 #ifndef BC_UR_CRC32_H
 #define BC_UR_CRC32_H
 
