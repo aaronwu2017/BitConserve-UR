@@ -28,8 +28,8 @@
  * SUCH DAMAGE.
  */
 
-#ifndef BC_UR_SHA2_H
-#define BC_UR_SHA2_H
+#ifndef __SHA2_H__
+#define __SHA2_H__
 
 #include <stdint.h>
 #include <stddef.h>
@@ -78,8 +78,14 @@ typedef struct _SHA512_CTX {
 }
 #endif /* BYTE_ORDER == LITTLE_ENDIAN */
 
+extern const uint32_t sha1_initial_hash_value[5];
 extern const uint32_t sha256_initial_hash_value[8];
 extern const uint64_t sha512_initial_hash_value[8];
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 void sha256_Transform(const uint32_t* state_in, const uint32_t* data, uint32_t* state_out);
 void sha256_Init(SHA256_CTX *);
@@ -97,4 +103,8 @@ char* sha512_End(SHA512_CTX*, char[SHA512_DIGEST_STRING_LENGTH]);
 void sha512_Raw(const uint8_t*, size_t, uint8_t[SHA512_DIGEST_LENGTH]);
 char* sha512_Data(const uint8_t*, size_t, char[SHA512_DIGEST_STRING_LENGTH]);
 
-#endif // BC_UR_SHA2_H
+#ifdef __cplusplus
+} /* end of extern "C" */
+#endif
+
+#endif

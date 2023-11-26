@@ -1,8 +1,17 @@
-#ifndef BC_UR_MEMZERO_H
-#define BC_UR_MEMZERO_H
+#ifndef __MEMZERO_H__
+#define __MEMZERO_H__
 
 #include <stddef.h>
 
-void memzero(void* const pnt, const size_t len);
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
-#endif // BC_UR_MEMZERO_H
+void memzero(void *s, size_t n);
+
+#ifdef __cplusplus
+} /* end of extern "C" */
+#endif
+
+#endif
