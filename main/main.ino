@@ -14,6 +14,11 @@
 #include <string>
 #include <assert.h>
 #include <algorithm>
+
+#include "FS.h"
+#include "SPIFFS.h"
+#include <iostream>
+#include <fstream>
 void setup(){
   Serial.begin(115200);
   while(!Serial){
@@ -21,25 +26,26 @@ void setup(){
   }
 
 
- test_crc32();
- test_rng_1();
- test_rng_2();
- test_rng_3();
- test_xor();
- test_random_sampler();
- test_find_fragment_length();
- test_shuffle();
- test_partition_and_join();
- test_choose_degree();
- test_choose_fragments();
- test_fountain_encoder();
- test_fountain_encoder_cbor();
-  test_fountain_encoder_is_complete();
- test_fountain_decoder();
- test_fountain_cbor();
- test_single_part_ur();
-  test_ur_encoder();
+//  test_crc32();
+//  test_rng_1();
+//  test_rng_2();
+//  test_rng_3();
+//  test_xor();
+//  test_random_sampler();
+//  test_find_fragment_length();
+//  test_shuffle();
+//  test_partition_and_join();
+//  test_choose_degree();
+//  test_choose_fragments();
+//  test_fountain_encoder();
+//  test_fountain_encoder_cbor();
+//   test_fountain_encoder_is_complete();
+//  test_fountain_decoder();
+//  test_fountain_cbor();
+//  test_single_part_ur();
+//   test_ur_encoder();
 //  test_multipart_ur();
+  test_psbtqr_decoder();
 
 
 }
@@ -556,4 +562,22 @@ static void test_multipart_ur() {
     } else {
        Serial.println("test_multipart_ur failed");
     }
+
 }
+ 
+// static void test_psbtqr_decoder() {
+//     // Make sure to initialize SPIFFS before this function is called
+//     File file = SPIFFS.open("/PSBTfragment.txt", FILE_READ);
+//     if (!file) {
+//         Serial.println("test_psbtqr_decoder failed");
+//         return;
+//     }
+
+//     while (file.available()) {
+//         String line = file.readStringUntil('\n');
+//         if (line.indexOf("UR:CRYPTO-PSBT") >= 0) {
+//             Serial.println(line);
+//         }
+//     }
+//     file.close();
+// }
